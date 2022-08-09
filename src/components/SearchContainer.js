@@ -1,71 +1,40 @@
-import { FormRow, FormRowSelect } from '.';
+import React from 'react'
+import {FormRow,FormRowSelect} from './index'
 import Wrapper from '../assets/wrappers/SearchContainer';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleChange, clearFilters } from '../features/allJobs/allJobsSlice';
+import { clearFilter, handleChange } from '../features/allJobs/allJobSlice';
 
 const SearchContainer = () => {
-  const { isLoading, search, searchStatus, searchType, sort, sortOptions } =
-    useSelector((store) => store.allJobs);
-
-  const { jobTypeOptions, statusOptions } = useSelector((store) => store.job);
-
-  const dispatch = useDispatch();
-
-  const handleSearch = (e) => {
-    if (isLoading) return;
-    dispatch(handleChange({ name: e.target.name, value: e.target.value }));
-  };
-  const handleSubmit = (e) => {
+  const{isLoading,search,searchStatus,type,sort,sortOptions}=useSelector((store)=>store.allJobs)
+  const {jobTypeOptions,statusOptions}=useSelector((store)=>store.job)
+  const dispatch=useDispatch();
+  const handleSearch=(e)=>{
+    dispatch(handleChange({name:e.target.name,value:e.target.value}))
+  }
+  const handleSubmit=(e)=>{
+    dispatch(clearFilter());
     e.preventDefault();
-    dispatch(clearFilters());
-  };
-
+  }
   return (
     <Wrapper>
-      <form className='form'>
-        <h4>search form</h4>
-        <div className='form-center'>
-          {/* search position */}
-          <FormRow
-            type='text'
-            name='search'
-            value={search}
-            handleChange={handleSearch}
-          />
-          {/* search by status */}
-          <FormRowSelect
-            labelText='status'
-            name='searchStatus'
-            value={searchStatus}
-            handleChange={handleSearch}
-            list={['all', ...statusOptions]}
-          />
-
-          {/* search by type*/}
-          <FormRowSelect
-            labelText='type'
-            name='searchType'
-            value={searchType}
-            handleChange={handleSearch}
-            list={['all', ...jobTypeOptions]}
-          />
-          {/* sort */}
-          <FormRowSelect
-            name='sort'
-            value={sort}
-            handleChange={handleSearch}
-            list={sortOptions}
-          />
-          <button
+    <form className="form">
+    <h4>Search Jobs</h4>
+    <div className="form-center">
+      <FormRow name="search" type="text" value={search} labelTxt="Search" handleChange={handleSearch}/>
+      <FormRowSelect name="searchStatus" value={searchStatus} labelText="Status" handleChange={handleSearch} list={['all',...statusOptions]}/>
+      <FormRowSelect name="type" value={type} labelText="Type" handleChange={handleSearch} list={["all",...jobTypeOptions]}/>
+      <FormRowSelect name="sort" value={sort} labelText="Sort" handleChange={handleSearch} list={sortOptions}/>
+      <button
             className='btn btn-block btn-danger'
             disabled={isLoading}
             onClick={handleSubmit}
           >
             clear filters
           </button>
-        </div>
-      </form>
+    </div>
+    </form>
     </Wrapper>
-  );
-};
-export default SearchContainer;
+  )
+}
+
+export default SearchContainer

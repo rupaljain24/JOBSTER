@@ -1,3 +1,5 @@
+import React from 'react'
+
 const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
   return (
     <div className='form-row'>
@@ -6,8 +8,8 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
       </label>
       <select
         name={name}
-        id={name}
         value={value}
+        id={name}
         onChange={handleChange}
         className='form-select'
       >
@@ -19,7 +21,8 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
           );
         })}
       </select>
-    </div>
-  );
-};
-export default FormRowSelect;
+      </div>
+  )
+}
+
+export default FormRowSelect

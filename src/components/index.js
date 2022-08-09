@@ -1,23 +1,24 @@
-import BigSidebar from './BigSidebar';
-import ChartsContainer from './ChartsContainer';
-import FormRow from './FormRow';
-import FormRowSelect from './FormRowSelect';
-import JobsContainer from './JobsContainer';
-import Logo from './Logo';
-import Navbar from './Navbar';
-import SearchContainer from './SearchContainer';
-import SmallSidebar from './SmallSidebar';
-import StatsContainer from './StatsContainer';
+// we are using this file for import export
 
-export {
-  Logo,
-  FormRow,
-  Navbar,
-  SmallSidebar,
-  BigSidebar,
-  FormRowSelect,
-  JobsContainer,
-  SearchContainer,
-  StatsContainer,
-  ChartsContainer,
-};
+import AreaChart from "./AreaChart";
+import BarChart from "./BarChart";
+import BigSidebar from "./BigSidebar";
+import ChartContainer from "./ChartContainer";
+import FormRow from "./FormRow";
+import JobContainer from "./JobContainer";
+import Jobs from "./Jobs";
+import Logo from "./Logo";
+import Navbar from "./Navbar";
+import NavLinks from "./NavLinks";
+import SearchContainer from "./SearchContainer";
+import SmallSidebar from "./SmallSidebar";
+import StatsContainer from "./StatsContainer";
+import FormRowSelect from './FormRowSelect'
+
+
+export {Logo,FormRow,Navbar,BigSidebar,SmallSidebar
+    ,NavLinks,SearchContainer,JobContainer,Jobs,StatsContainer,
+    ChartContainer,AreaChart,BarChart,FormRowSelect};
+    
+    
+

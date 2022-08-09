@@ -1,22 +1,27 @@
-import { useEffect } from 'react';
-import { StatsContainer, Loading, ChartsContainer } from '../../components';
-import { useDispatch, useSelector } from 'react-redux';
-import { showStats } from '../../features/allJobs/allJobsSlice';
+import React,{useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {ChartContainer,StatsContainer} from '../../components';
+import { showStats } from '../../features/allJobs/allJobSlice';
 
 const Stats = () => {
-  const { isLoading, monthlyApplications } = useSelector(
-    (store) => store.allJobs
-  );
-
-  const dispatch = useDispatch();
+  const {isLoading}=useSelector((store)=>store.allJobs)
+  // console.log(stats);
+  const dispatch=useDispatch();
+  
+  
   useEffect(() => {
     dispatch(showStats());
-  }, []);
+    
+  }, [])
+  if(isLoading){
+    return<h2>Loading..</h2>
+  }
   return (
     <>
       <StatsContainer />
-      {monthlyApplications.length > 0 && <ChartsContainer />}
+     <ChartContainer />
     </>
   );
-};
-export default Stats;
+}
+
+export default Stats
